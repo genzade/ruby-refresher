@@ -166,27 +166,35 @@ end
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
-  string.gsub(/\b[A-Z]?[^A-Z\s']+\s*\b/, '')
+  arr = string.split(/([[:upper:]]*)/)
+  arr.each { |char| arr.delete(char) if /[[:upper:]]/.match(char)}.join
 end
 
 # round up a float up and convert it to an Integer,
 # so 3.214 becomes 4
 def round_up_number(float)
+  float.ceil
 end
 
 # round down a float up and convert it to an Integer,
 # so 9.52 becomes 9
 def round_down_number(float)
+  float.to_i
 end
 
 # take a date and format it like dd/mm/yyyy, so Halloween 2013
 # becomes 31/10/2013
 def format_date_nicely(date)
+  date.strftime("%d/%m/%Y")
 end
 
 # get the domain name *without* the .com part, from an email address
 # so alex@makersacademy.com becomes makersacademy
 def get_domain_name_from_email_address(email)
+  email = "http://#{email}" if URI.parse(email).scheme.nil?
+  host = URI.parse(email).host.downcase
+  host.start_with?('www.') ? host[4..-1] : host
+  host.tr(".com", "")
 end
 
 # capitalize the first letter in each word of a string, 
@@ -195,12 +203,20 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
+  string.capitalize!
+  words_to_ignore = ["and", "the", "a"]
+  string.split(" ").map { |word| 
+    words_to_ignore.include?(word) ? word : word.capitalize
+  }.join(" ")
 end
 
 # return true if a string contains any special characters
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
+  special = "?<>',@?[]}{=-)(*&^%$#`~{}"
+  regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
+  string =~ regex ? true : false
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
