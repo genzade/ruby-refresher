@@ -156,7 +156,7 @@ describe "the Friday test :)" do
     expect(n).to eq "31/10/2013"
   end
 
-  xit "get_domain_name_from_email_address" do
+  it "get_domain_name_from_email_address" do
     n = get_domain_name_from_email_address "alex@makersacademy.com"
     expect(n).to eq "makersacademy"
   end
@@ -194,30 +194,30 @@ describe "the Friday test :)" do
     expect(b).to eq 1.7320508075688772
   end
 
-#   it "word_count_a_file" do
-#     n = word_count_a_file "data/lorem.txt"
-#     expect(n).to eq 70
-#   end
+  it "word_count_a_file" do
+    n = word_count_a_file "data/lorem.txt"
+    expect(n).to eq 70
+  end
 
-#   it "call_method_from_string" do
-#     expect { call_method_from_string("foobar") }.to raise_error(NameError)
-#   end
+  it "call_method_from_string" do
+    expect { call_method_from_string("foobar") }.to raise_error(NameError)
+  end
 
-#   it "is_a_2014_bank_holiday?" do
-#     a = is_a_2014_bank_holiday?(Time.new(2014, 8, 25))
-#     b = is_a_2014_bank_holiday?(Time.new(2014, 8, 26))
+  it "is_a_2014_bank_holiday?" do
+    a = is_a_2014_bank_holiday?(Time.new(2014, 8, 25))
+    b = is_a_2014_bank_holiday?(Time.new(2014, 8, 26))
 
-#     expect(a).to be true
-#     expect(b).to be false
-#   end
+    expect(a).to be true
+    expect(b).to be false
+  end
 
-#   it "your_birthday_is_on_a_friday_in_the_year" do
-#     n = your_birthday_is_on_a_friday_in_the_year(Time.new(2013, 1, 1))
-#     expect(n).to eq 2016
-#   end
+  it "your_birthday_is_on_a_friday_in_the_year" do
+    n = your_birthday_is_on_a_friday_in_the_year(Time.new(2013, 1, 1))
+    expect(n).to eq 2016
+  end
 
-#   it "count_words_of_each_length_in_a_file" do
-#     n = count_words_of_each_length_in_a_file("data/lorem.txt") || []
-#     expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3})
-#   end
+  it "count_words_of_each_length_in_a_file" do
+    n = count_words_of_each_length_in_a_file("data/lorem.txt") || []
+    expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3})
+  end
 end

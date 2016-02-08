@@ -222,19 +222,24 @@ end
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+  range.last
 end
 
 # should return true for a 3 dot range like 1...20, false for a 
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+  range.include?(range.last) ? false : true
 end
 
 # get the square root of a number
 def square_root_of(number)
+  number ** 0.5
 end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+  file = File.open(file_path, "r")
+  file.read.split.count
 end
 
 # --- tougher ones ---
@@ -243,6 +248,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+  self.send(str_method)
 end
 
 # return true if the date is a uk bank holiday for 2014
